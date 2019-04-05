@@ -6,6 +6,8 @@ class EnvParser:
     EC2_SSH_PRIVATE_KEY = None
     GITHUB_URL = None
     DOCKER_IMAGE_NAME = None
+    DOCKER_HUB_USER = None
+    DOCKER_HUB_PASSWORD = None
 
     def __init__(self):
         config = configparser.ConfigParser()
@@ -15,3 +17,5 @@ class EnvParser:
         self.EC2_SSH_PRIVATE_KEY = config['CONFIG']['EC2_SSH_PRIVATE_KEY']
         self.GITHUB_URL = config['CONFIG']['GITHUB_URL']
         self.DOCKER_IMAGE_NAME = config['CONFIG']['DOCKER_IMAGE_NAME']
+        self.DOCKER_HUB_USER = config['CONFIG']['DOCKER_HUB_USER']
+        self.DOCKER_HUB_PASSWORD = config['CONFIG']['DOCKER_HUB_PASSWORD']
