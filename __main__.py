@@ -95,11 +95,20 @@ if __name__ == "__main__":
     awsEc2Manager.start_instance()
 
     # 2. Git Pull, Build, and Push to Docker Hub.
+    logging.info('Cloning Git repository..')
     awsEc2Manager.exec_command('sudo git clone {} /tmp/remote-builder'.format(envParser.GITHUB_URL))
+
+    logging.info('Building Docker image from Github repository..')
     awsEc2Manager.exec_command('sudo docker build /tmp/remote-builder/ -t {}'.format(envParser.DOCKER_IMAGE_NAME))
+
+    logging.info('Checking if valid Docker Hub credential..')
     awsEc2Manager.exec_command('sudo docker login -u {} -p {}'.format(envParser.DOCKER_HUB_USER,
                                                                       envParser.DOCKER_HUB_PASSWORD))
+
+    logging.info('Pushing built Docker image..')
     awsEc2Manager.exec_command('sudo docker push {}'.format(envParser.DOCKER_IMAGE_NAME))
+
+    logging.info('Cleaning up..')
     awsEc2Manager.exec_command('sudo rm -rf /tmp/remote-builder')
 
     # 3. Stop EC2 Instance
