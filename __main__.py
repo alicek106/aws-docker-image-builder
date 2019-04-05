@@ -55,6 +55,7 @@ class AwsEc2Manager:
         # Check whether instance is already running
         if self.ec2_instance_data['State']['Code'] == StatusCode.RUNNING:
             logging.info('EC2 instance is in active.')
+            self.__set_ssh_object()
             return
 
         # It not running, start and wait
