@@ -112,4 +112,9 @@ if __name__ == "__main__":
     awsEc2Manager.exec_command('sudo rm -rf /tmp/remote-builder')
 
     # 3. Stop EC2 Instance
-    awsEc2Manager.stop_instance()
+    if envParser.STOP_INSTANCE_AFTER_PUSH == "yes":
+        logging.info('Stopping EC2 instance...')
+        awsEc2Manager.stop_instance()
+    else:
+        logging.info('EC2 will be still running..')
+        pass

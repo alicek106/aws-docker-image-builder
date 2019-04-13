@@ -8,6 +8,7 @@ class EnvParser:
     DOCKER_IMAGE_NAME = None
     DOCKER_HUB_USER = None
     DOCKER_HUB_PASSWORD = None
+    STOP_INSTANCE_AFTER_PUSH = None
 
     def __init__(self):
         config = configparser.ConfigParser()
@@ -19,3 +20,4 @@ class EnvParser:
         self.DOCKER_IMAGE_NAME = config['CONFIG']['DOCKER_IMAGE_NAME']
         self.DOCKER_HUB_USER = config['CONFIG']['DOCKER_HUB_USER']
         self.DOCKER_HUB_PASSWORD = config['CONFIG']['DOCKER_HUB_PASSWORD']
+        self.STOP_INSTANCE_AFTER_PUSH = config['CONFIG']['STOP_INSTANCE_AFTER_PUSH']
