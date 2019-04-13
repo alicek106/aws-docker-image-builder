@@ -57,6 +57,7 @@ Python with pip version 3.+
 - **GITHUB_URL** : Github repository URL that contains Dockerfile
 - **DOCKER_IMAGE_NAME** : Image name to be built and pushed
 - **DOCKER_HUB_USER** and **DOCKER_HUB_PASSWORD** : Docker Hub access information
+- **STOP_INSTANCE_AFTER_PUSH** : if 'yes', EC2 instance will be stopped after pushing image
 
 6. Execute python script. Docker image will be built and pushed to Docker Hub.
 
