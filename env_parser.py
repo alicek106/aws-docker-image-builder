@@ -9,6 +9,8 @@ class EnvParser:
     DOCKER_HUB_USER = None
     DOCKER_HUB_PASSWORD = None
     STOP_INSTANCE_AFTER_PUSH = None
+    IMAGE_UPDATE_TARGET_DEPLOYMENT_NAME = None
+    IMAGE_UPDATER_ENDPOINT = None
 
     def __init__(self):
         config = configparser.ConfigParser()
@@ -21,3 +23,5 @@ class EnvParser:
         self.DOCKER_HUB_USER = config['CONFIG']['DOCKER_HUB_USER']
         self.DOCKER_HUB_PASSWORD = config['CONFIG']['DOCKER_HUB_PASSWORD']
         self.STOP_INSTANCE_AFTER_PUSH = config['CONFIG']['STOP_INSTANCE_AFTER_PUSH']
+        self.IMAGE_UPDATE_TARGET_DEPLOYMENT_NAME = config['CONFIG']['IMAGE_UPDATE_TARGET_DEPLOYMENT_NAME']
+        self.IMAGE_UPDATER_ENDPOINT = config['CONFIG']['IMAGE_UPDATER_ENDPOINT']

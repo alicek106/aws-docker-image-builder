@@ -107,7 +107,14 @@ if __name__ == "__main__":
 
     logging.info('Pushing built Docker image..')
     awsEc2Manager.exec_command('sudo docker push {}'.format(envParser.DOCKER_IMAGE_NAME))
-
+    
+    logging.info('Updating deployment...')
+    cmd = 'curl "{}:30000?deploymentName={}&newImageName={}"'.format(envParser.IMAGE_UPDATER_ENDPOINT,
+        envParser.IMAGE_UPDATE_TARGET_DEPLOYMENT_NAME,
+        envParser.DOCKER_IMAGE_NAME)
+    logging.info('cmd : {}'.format(cmd))
+    awsEc2Manager.exec_command(cmd)
+    
     logging.info('Cleaning up..')
     awsEc2Manager.exec_command('sudo rm -rf /tmp/remote-builder')
 
