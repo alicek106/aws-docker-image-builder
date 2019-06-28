@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-updater
+spec:
+  selector:
+    matchLabels:
+      app: update
+  template:
+    metadata:
+      name: deployment-updater
+      labels:
+        app: update
+    spec:
+      containers:
+      - name: updater
+        image: alicek106/k8s-deployment-updater
